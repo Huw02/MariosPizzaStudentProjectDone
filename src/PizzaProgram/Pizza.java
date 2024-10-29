@@ -6,6 +6,9 @@ import static PizzaProgram.ValuesOfPizza.menyPizza;
 
 public class Pizza {
 
+Ændremenykort change = new Ændremenykort();
+MakeOrder alexander = new MakeOrder("");
+
 
 
     public Pizza (){
@@ -16,10 +19,32 @@ public class Pizza {
         ValuesOfPizza pepperoni = new ValuesOfPizza("Pepperoni", "Tomatsovs, ost og pepperoni", 75);
         ValuesOfPizza hawaii = new ValuesOfPizza("Hawaii", "Tomatsovs, ost, skinke og ananas", 70);
         ValuesOfPizza capriccioa = new ValuesOfPizza("Capriccioa", "Tomatsauce, mozzarella, skinke, champignon", 85);
-        ValuesOfPizza quattroStagioni= new ValuesOfPizza("Quattro Stagioni", "Tomatsauce, mozzarella, skinke, champignon, artiskok, oliven ", 90 );
-     ValuesOfPizza vesuvio = new ValuesOfPizza("Vesuvio", "Tomatsauce, mozzarella, skinke ", 80 );
-    ValuesOfPizza diavola = new ValuesOfPizza("Diavola", "Tomatsauce, mozzarella, spicy salami, chili ", 90 );
+        ValuesOfPizza quattroStagioni= new ValuesOfPizza("Quattro Stagioni", "Tomatsauce, mozzarella, skinke, champignon, artiskok, oliven", 90 );
+     ValuesOfPizza vesuvio = new ValuesOfPizza("Vesuvio", "Tomatsauce, mozzarella, skinke", 80 );
+    ValuesOfPizza diavola = new ValuesOfPizza("Diavola", "Tomatsauce, mozzarella, spicy salami, chili", 90 );
     ValuesOfPizza prosciuttoEFunghi = new ValuesOfPizza("Prosciutto e Funghi", " Tomatsauce, mozzarella, skinke, svampe", 85 );
+    ValuesOfPizza marinara = new ValuesOfPizza("Marinara", "Tomatsauce, hvidløg, oregano", 65);
+    ValuesOfPizza vegetariana = new ValuesOfPizza("Vegetariana", "Tomatsauce, mozzarella, peberfrugt, løg, zucchini, aubergine", 85);
+    ValuesOfPizza quattroFormaggi= new ValuesOfPizza("Quattro Formaggi", "Tomatsauce, mozzarella, gorgonzola, parmesan, ricotta", 95);
+    ValuesOfPizza tonnoECipolla= new ValuesOfPizza("Tonno e Cipolla", "Tomatsauce, mozzarella, tun, løg", 90);
+    ValuesOfPizza bBQChicken= new ValuesOfPizza("BBQ Chicken", " BBQ sauce, kylling, mozzarella, løg", 90);
+    ValuesOfPizza bianca = new ValuesOfPizza("Bianca", "Creme fraiche, mozzarella, kartoffel, rosmarin", 85);
+    ValuesOfPizza parma = new ValuesOfPizza("Parma", "Tomatsauce, mozzarella, parmaskinke, rucola, parmesan", 95);
+    /*
+    ValuesOfPizza x = new ValuesOfPizza("", " ", 0);
+    ValuesOfPizza x = new ValuesOfPizza("", " ", 0);
+    ValuesOfPizza x = new ValuesOfPizza("", " ", 0);
+    ValuesOfPizza x = new ValuesOfPizza("", " ", 0);
+    ValuesOfPizza x = new ValuesOfPizza("", " ", 0);
+    ValuesOfPizza x = new ValuesOfPizza("", " ", 0);
+    ValuesOfPizza x = new ValuesOfPizza("", " ", 0);
+    ValuesOfPizza x = new ValuesOfPizza("", " ", 0);
+    ValuesOfPizza x = new ValuesOfPizza("", " ", 0);
+    ValuesOfPizza x = new ValuesOfPizza("", " ", 0);
+    ValuesOfPizza x = new ValuesOfPizza("", " ", 0);
+    ValuesOfPizza x = new ValuesOfPizza("", " ", 0);
+    ValuesOfPizza x = new ValuesOfPizza("", " ", 0);
+    ValuesOfPizza x = new ValuesOfPizza("", " ", 0); */
 
 
 
@@ -40,6 +65,7 @@ public class Pizza {
                 ValuesOfPizza.visAllePizzaer();
 
             } else if (scInput == 2) {
+                alexander.IndtastOrdre();
 
             } else if (scInput == 3) {
 
@@ -50,6 +76,7 @@ public class Pizza {
             } else if (scInput == 6) {
 
             } else if (scInput == 7) {
+                change.ændreMenukort();
 
             } else if (scInput == 8){
                 System.out.println("Du har valgt at slukke for programmet");
