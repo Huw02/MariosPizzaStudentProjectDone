@@ -37,7 +37,7 @@ public class Ændremenykort {
 
 
         if (index >= 0 && index < menyPizza.size()) {
-            ValuesOfPizza removedPizza = menyPizza.remove(index);
+            ValuesOfPizza removedPizza = menyPizza.remove(index-1);
             System.out.println("Pizza '" + removedPizza.navn + "' er blevet slettet fra menuen.");
         } else {
             System.out.println("Ugyldigt valg. Prøv igen.");
@@ -59,7 +59,7 @@ public class Ændremenykort {
         System.out.println("Hvilken pizza vil du ændre prisen på?");
         visAllePizzaer();
         int pizza=scanner.nextInt();
-        ValuesOfPizza selectPizza= menyPizza.get(pizza);
+        ValuesOfPizza selectPizza= menyPizza.get(pizza-1);
         System.out.println("Hvad vil du ændre "+selectPizza.navn + "'s pris til");
         int nyPris= scanner.nextInt();
         selectPizza.pris=nyPris;
