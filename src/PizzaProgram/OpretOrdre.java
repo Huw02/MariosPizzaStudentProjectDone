@@ -1,11 +1,10 @@
+
 package PizzaProgram;
 
 import java.util.Scanner;
 import static PizzaProgram.ValuesOfPizza.menyPizza;
 import java.util.ArrayList;
-//den her lavede jeg i går, her er opret ordre, omsætning, dagens tab og alt det her. kan lige vise den. I princippet,
-// Så er der en masse arraylister, hvor informationer bliver kastet frem og tilbage, det gør at den kan gemme nogen informationer og nulstille andre informationer
-//råb lige op hvis i har et spørgsmål eller jeg skal forklare noget
+
 
 public class OpretOrdre {
     public int pizzaOrdreAntal;
@@ -17,25 +16,19 @@ public class OpretOrdre {
     public static ArrayList<Integer> pizzaOrdrePris = new ArrayList<Integer>();
     public static ArrayList<Integer> pizzaOrdreAntalArr = new ArrayList<Integer>();
     public static ArrayList<String> ordreLinje1 = new ArrayList<String>();
-    public static ArrayList<String> kundeNavn = new ArrayList<String>();
     String kundeNavnSlut;
-    int ordreNummerKø = 0;
     public static ArrayList<Integer> betaling = new ArrayList<Integer>();
     public int omsætningSlut;
     public int dagensTabSlut;
-    int kundeNummerST;
 
 
 
+//Vores constructor som har startværdierene for vores variable vi bruger til at oprette en ordre.
     public OpretOrdre() {
         this.pizzaOrdreAntal = 0;
         this.ordreTotalPris = 0;
         this.givenPizzaPris = 0;
         this.samletPris = 0;
-        this.kundeNummerST = ordreLinje1.indexOf(this);
-
-
-
     }
 
     public void tilføjPizza() {
@@ -43,7 +36,6 @@ public class OpretOrdre {
         Scanner scNavnKunde = new Scanner(System.in);
         String scNavnKundeInput = scNavnKunde.nextLine();
         kundeNavnSlut = scNavnKundeInput;
-        //kundeNavn.add(scNavnKundeInput);
 
         boolean flerePizzaer = true;
         while (flerePizzaer) {
@@ -57,7 +49,6 @@ public class OpretOrdre {
             pizzaOrdreNavne.add(valgtPizza);
             givenPizzaPris = menyPizza.get(scOrdreInput).pris;
             pizzaOrdrePris.add(givenPizzaPris);
-
 
             System.out.println("Hvor mange gange vil du tilføje den givne pizza?"); // hvor mange vil man have af den givne pizza
             Scanner scOrdreAntal = new Scanner(System.in);
@@ -79,8 +70,6 @@ public class OpretOrdre {
             } else {
                 flerePizzaer = false;
             }
-
-
         }
         System.out.println("Du har valgt følgende pizzaer: " + pizzaOrdreNavne);
         System.out.println("De er blevet valgt i følgende antal: " + pizzaOrdreAntalArr); //jeg vil gerne ændre på, hvordan layout ser ud, fordi det ser lidt scuffed ud, når den printer, jeg kan lige vise det til marcus bagefter siden han missede den færste del
@@ -94,8 +83,7 @@ public class OpretOrdre {
             int scKassereInput = scKassere.nextInt();
             if (scKassereInput == 1) {
 
-                ordreNummerKø++; // her får den et ordrenummer, den skal lige ændres lidt på
-                ordreLinje1.add("Kundenavn: " + kundeNavnSlut+ "\nOrdre Nummer: " + kundeNummerST + ". Pizzaer: " + pizzaOrdreNavne + " Antal: " + antalToString() + " Pris: " + prisToString() + " kr");
+                ordreLinje1.add("\nKundenavn: " + kundeNavnSlut+  " \nPizzaer: " + pizzaOrdreNavne + " \nAntal: " + antalToString() + " \nPris: " + prisToString() + " kr");
                 betaling.add(samletPris);
 
                 kassereOrdre = false;
@@ -127,14 +115,18 @@ public class OpretOrdre {
         return " " + samletPris;
     }
 
+
     //den viser den nuværende ordrelinje
     public void visOrdrelinje(){
 
-        System.out.println("\n Dette er de nuværende ordre:");
+        System.out.println("\nDer er " + ordreLinje1.size() + " ordre i systemet");
+
+        System.out.println("\nDette er de nuværende ordre:");
         for(String a : ordreLinje1){
             System.out.println(a);
         }
     }
+
     //her kan man færdiggøre en ordre. 3 muligheder, tilføj til dagens salg, dagens tab eller bare annullere ordren.
     public void finishOrder(){
         boolean funkValg = true;
@@ -151,7 +143,7 @@ public class OpretOrdre {
                 visOrdrelinje();
                 Scanner scFinish = new Scanner(System.in);
                 int scFinishInput = scFinish.nextInt();
-                System.out.println("Du har valgt: " + ordreLinje1.get(scFinishInput -1));
+                System.out.println("\nDu har valgt: " + ordreLinje1.get(scFinishInput -1));
                 System.out.println("Kunden skal betale: " + betaling.get(scFinishInput-1) + " kr");
                 System.out.println("Har kunden betalt? " +
                         "\nTast 1 for ja, hvilket vil færdiggøre ordren." +
@@ -162,7 +154,9 @@ public class OpretOrdre {
                     if (scDoneInput == 1) {
                         System.out.println("Du har valgt at kunden har betalt");
                         omsætningSlut += betaling.get(scFinishInput-1);
-                        ordreLinje1.remove(ordreLinje1.get(scFinishInput -1));
+                        ordreLinje1.remove(scFinishInput -1);
+                        betaling.remove(scFinishInput -1);
+
                         funkValg1 = false;
                     } else if (scDoneInput == 2) {
                         System.out.println("Du valgte at kunden ikke har betalt");
@@ -172,7 +166,6 @@ public class OpretOrdre {
                     }
                 }
 
-
                 funkValg = false;
             } else if (scFunkInput == 2){
                 System.out.println("Hvilken ordre skal annulleres fra ordrelinjen?");
@@ -181,6 +174,7 @@ public class OpretOrdre {
                 int scFinishInput1 = scFinish1.nextInt();
                 System.out.println("Du har valgt: " + ordreLinje1.get(scFinishInput1 -1));
                 ordreLinje1.remove( ordreLinje1.get(scFinishInput1 -1));
+                betaling.remove(scFinishInput1 -1);
 
                 funkValg = false;
             } else if (scFunkInput == 3){
@@ -191,7 +185,7 @@ public class OpretOrdre {
                 System.out.println("Du har valgt: " + ordreLinje1.get(scTabInput -1));
                 dagensTabSlut += betaling.get(scTabInput-1);
                 ordreLinje1.remove( ordreLinje1.get(scTabInput -1));
-
+                betaling.remove(scTabInput -1);
 
                 funkValg = false;
             } else {System.out.println("Det forstod jeg ikke, prøv igen"); }
@@ -200,12 +194,10 @@ public class OpretOrdre {
         }
 
 
-
     }
 // de her to viser omsætning og dagens tab
     public void omsætning(){
         System.out.println("Dagens omsætning er følgende: " + omsætningSlut + " kr");
-
     }
 
     public void dagensTab(){
@@ -213,5 +205,23 @@ public class OpretOrdre {
 
     }
 
+    public void redgirOrdre(){ //Denne blev vi aldrig færdig med.
+        System.out.println("Hvilken ordre vil du redigere?");
+        visOrdrelinje();
+        Scanner scRediger = new Scanner(System.in);
+        int scRedigerInput = scRediger.nextInt();
+        System.out.println("Tast nummeret på det du vil redigere:" +
+                "1. Navnet på kunden" +
+                "2. Pizzaerne på ordren" +
+                "3. antallet af pizzaer");
+        Scanner scRedigerChoice = new Scanner(System.in);
+        int scRedigerChoiceInput = scRediger.nextInt();
+        if(scRedigerChoiceInput == 1){
 
+        } else if (scRedigerChoiceInput == 2){
+
+        } else if (scRedigerChoiceInput == 3){
+
+        } else { System.out.println("Det forstod jeg ikke."); }
+    }
 }

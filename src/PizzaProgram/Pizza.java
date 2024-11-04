@@ -7,12 +7,11 @@ import static PizzaProgram.ValuesOfPizza.menyPizza;
 public class Pizza {
 
 Ændremenykort change = new Ændremenykort();
-MakeOrder alexander = new MakeOrder("");
 
-//herinde bliver de instanceret,
+
+//her har vi de 30 instancerede pizzaer
 
     public Pizza (){
-
 
     }
     ValuesOfPizza margaritha = new ValuesOfPizza("Margaritha", "Tomatsauce og ost", 65);
@@ -54,6 +53,8 @@ MakeOrder alexander = new MakeOrder("");
 //her foregår menuen, altså kommandoerne fra 1-7
     OpretOrdre ordre = new OpretOrdre();
 
+
+
     public void kommandoer(){
         boolean kmOn = true;
         while(kmOn) {
@@ -68,7 +69,7 @@ MakeOrder alexander = new MakeOrder("");
             } else if (scInput == 3) {
                 ordre.visOrdrelinje();
             } else if (scInput == 4) {
-
+                System.out.println("Denne funktion blev desværre aldrig færdig");
             } else if (scInput == 5) {
                 ordre.finishOrder();
             } else if (scInput == 6) {
@@ -86,7 +87,6 @@ MakeOrder alexander = new MakeOrder("");
                     System.out.println("Det forstod jeg ikke, skriv et tal mellem 1-3");
                 }
 
-
             } else if (scInput == 7){
                 System.out.println("Du har valgt at slukke for programmet");
                 kmOn = false;
@@ -103,9 +103,6 @@ MakeOrder alexander = new MakeOrder("");
                 "\n4. Rediger ordre" +
                 "\n5. Færdiggør ordre" +
                 "\n6. Adminastrativt arbejde" +
-                "\n6A.Se dagens omsætning" +
-                "\n6B.Se dagens tab" +
-                "\n6C.Ændre menyKortet" +
                 "\n7. Sluk for programmet");
     }
 }

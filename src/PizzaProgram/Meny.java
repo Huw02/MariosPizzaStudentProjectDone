@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class Meny {
     public static void main(String []args){
-
         System.out.println(
                 "    \nHEJ OG VELKOMMEN TIL MARIOS PIZZARIA!" +
                         " \n" +
@@ -33,15 +32,11 @@ public class Meny {
         Scanner scStart = new Scanner(System.in);
         String scStartInput = scStart.nextLine();
         if(scStartInput.equals("1")){
-            Pizza test = new Pizza();
-            test.kommandoer();
+            Pizza runIt = new Pizza();
+            runIt.kommandoer();
         } else {
             System.out.println("Det kan også være svært at taste 1...");
         }
-
-
-
-
 
     }
 }

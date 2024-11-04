@@ -3,8 +3,6 @@ package PizzaProgram;
 import java.util.ArrayList;
 
 public class ValuesOfPizza {
-    public int pizzaNummer;
-    public static int pizzaAntal = -1;
     public String navn;
     public String ingredienser;
     public int pris;
@@ -12,25 +10,22 @@ public class ValuesOfPizza {
     public static ArrayList<ValuesOfPizza> menyPizza= new ArrayList<>();
 
 
-//Det her er basis værdien for alle pizzaerne
 
 
+// vores constructor, hvor at hver gang en pizza bliver instanceret, så bliver den automatisk tilføjet til arraylisten menyPizza
     public ValuesOfPizza (String navn, String ingredienser, int pris){
-        this.pizzaAntal++;
-        this.pizzaNummer = pizzaAntal + 1;
         this.navn = navn;
         this.ingredienser = ingredienser;
         this.pris = pris;
         valuta ="kr";
         menyPizza.add(this);
-
     }
 
     public String pizzaToString (){
         return menyPizza.indexOf(this)+1 + ". " + this.navn + ": " + this.ingredienser + " ............ " + this.pris + " " + valuta;
     }
 
-    public static void visAllePizzaer(){
+    public static void visAllePizzaer(){ //vores pizzaliste
         System.out.println("______________________________________________________________________________________________________________________________");
         for(ValuesOfPizza pizza : menyPizza){
             System.out.println(pizza.pizzaToString());
@@ -38,6 +33,7 @@ public class ValuesOfPizza {
         System.out.println("______________________________________________________________________________________________________________________________");
 
     }
+
 
 
 
